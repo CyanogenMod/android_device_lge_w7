@@ -90,6 +90,9 @@ TARGET_USES_QCOM_COMPRESSED_AUDIO := true
 # GPS
 TARGET_NO_RPC := true
 
+# RIL
+BOARD_RIL_CLASS := ../../../device/lge/w7/ril/
+
 # Graphics
 BOARD_EGL_CFG := device/lge/w7/prebuilt/egl.cfg
 TARGET_DISPLAY_USE_RETIRE_FENCE := true
