@@ -11,15 +11,9 @@ on init
     chmod 755 /sbin/bbx
     chmod 755 /fscheck.sh
     exec /fscheck.sh
-
-    # CM: We use our own ril-daemon service definition, see mmi-ril-daemon
-    stop ril-daemon
-
+    
 on fs
     mount_all fstab.w7
-   
-    # Executing tune2fs to reserve some region in /data. (40MB)
-    exec /system/bin/tune2fs -u system -r 10240 /dev/block/platform/msm_sdcc.1/by-name/userdata
 
     # Keeping following partitions outside fstab file. As user may not have
     # these partition flashed on the device. Failure to mount any partition in fstab file
@@ -106,6 +100,13 @@ service audiod /system/bin/audiod
    user system
    group system
 
+service charger /sbin/charger_w7
+    class charger
+    critical
+
+on charger
+   class_start charger
+
 on boot
 
     chown system system /sys/class/power_supply/battery/pseudo_batt
@@ -136,11 +137,3 @@ on property:ro.lge.callduration=1
     mkdir /persist-lg/callduration 0770 system radio
     chown system radio /persist-lg/callduration
     chmod 0770 /persist-lg/callduration
-
-service mmi-ril-daemon /system/bin/rild
-    class main
-    socket rild stream 660 root radio
-    socket rild-debug stream 660 radio system
-    socket cutback stream 660 media radio
-    user root
-    group radio cache inet misc audio sdcard_rw qcom_oncrpc qcom_diag log net_raw diag
