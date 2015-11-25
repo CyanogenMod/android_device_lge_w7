@@ -20,5 +20,5 @@ fi
 if [ "$model" = "LG-D415" ]; then
 	rm /system/bin/fm_qsoc_patches
 	rm /system/etc/permissions/qcom.fmradio.xml
-	rm -rf /system/app/FM2/
+	rm -rf /system/priv-app/FMRadio/
 fi
