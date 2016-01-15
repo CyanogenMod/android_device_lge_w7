@@ -186,9 +186,6 @@ vendor/lib/libmmcamera_imx219.so
 vendor/lib/libqomx_jpegdec.so
 vendor/lib/libqomx_jpegenc.so
 
-# FM radio
-bin/fm_qsoc_patches
-
 # Sensors
 vendor/lib/hw/sensors.msm8226.so
 vendor/lib/libsensor1.so
