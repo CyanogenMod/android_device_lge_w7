@@ -27,9 +27,9 @@
 
 # Vendor Init
 TARGET_UNIFIED_DEVICE := true
-TARGET_INIT_VENDOR_LIB := libinit_msm
-TARGET_LIBINIT_DEFINES_FILE := device/lge/w7/init/init_w7.cpp
+TARGET_INIT_VENDOR_LIB := libinit_w7
 TARGET_OTA_ASSERT_DEVICE := w7,w7ds,w7n,w7nds
+TARGET_RECOVERY_DEVICE_MODULES := libinit_w7
 TARGET_RELEASETOOLS_EXTENSIONS := device/lge/w7
 
 # Bootloader
